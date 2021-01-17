@@ -23,6 +23,7 @@ with open(csvpath) as csvfile:
     greatest_decrease = 0
     greatest_increase_month = ""
     greatest_decrease_month = ""
+    
 
     # iterate through the file... 
     for row in csvreader:
@@ -34,24 +35,31 @@ with open(csvpath) as csvfile:
         net_profit = net_profit + int(row[1])
 
         # Find the greatest increase in profits (date and amount) over the entire period
+        # .... this is measuring a month over month increase?
         if int(row[1]) > greatest_increase:
             greatest_increase = int(row[1])
             greatest_increase_month = row[0]
 
         # Find the greatest decrease in losses (date and amount) over the entire period
+        # .... this is measuring a month over month loss?
         if int(row[1]) < greatest_decrease:
             greatest_decrease = int(row[1])
             greatest_decrease_month = row[0]
 
         # calculate the changes in "Profit/Losses" over the entire period, 
         # then find the average of those changes
+        
 
+average_change = net_profit/total_months
+print(f"average change = {average_change}")
 
+# Print the anaylysis to the terminal window
+print("Financial Analysis")
+print("----------------------------")
 print(f"Total number of months: {total_months}")
 print(f"Net profit: ${net_profit}")
 print(f"Greatest increase: ${greatest_increase} in {greatest_increase_month}")
 print(f"Greatest decrease: ${greatest_decrease} in {greatest_decrease_month}")
 
-# Print the analysis to the terminal window
-
 # Export the analysis to a text file
+
