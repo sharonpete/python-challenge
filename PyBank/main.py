@@ -1,17 +1,56 @@
 # This will analyze the financial records for ACME 
 
+# Import the os and csv modules, bake some Chocolate Cake
+import os
+import csv
+
+csvpath = os.path.join('Resources', 'budget_data.csv')
+
 # load the file
+with open(csvpath) as csvfile:
 
-# find the total number of months included in the dataset
+    csvreader = csv.reader(csvfile, delimiter=',')
 
-# find the net total amount of "Profit/Losses" over the entire period
+    print(csvreader)
 
-# calculate the changes in "Profit/Losses" over the entire period, 
-# then find the average of those changes
+    csv_header = next(csvreader)
 
-# Find the greatest increase in profits (date and amount) over the entire period
+    print(f"CSV Header: {csv_header}")
+    
+    total_months = 0
+    net_profit = 0
+    greatest_increase = 0
+    greatest_decrease = 0
+    greatest_increase_month = ""
+    greatest_decrease_month = ""
 
-# Find the greatest decrease in losses (date and amount) over the entire period
+    # iterate through the file... 
+    for row in csvreader:
+
+        # find the total number of months included in the dataset
+        total_months = total_months +1
+
+        # find the net total amount of "Profit/Losses" over the entire period
+        net_profit = net_profit + int(row[1])
+
+        # Find the greatest increase in profits (date and amount) over the entire period
+        if int(row[1]) > greatest_increase:
+            greatest_increase = int(row[1])
+            greatest_increase_month = row[0]
+
+        # Find the greatest decrease in losses (date and amount) over the entire period
+        if int(row[1]) < greatest_decrease:
+            greatest_decrease = int(row[1])
+            greatest_decrease_month = row[0]
+
+        # calculate the changes in "Profit/Losses" over the entire period, 
+        # then find the average of those changes
+
+
+print(f"Total number of months: {total_months}")
+print(f"Net profit: ${net_profit}")
+print(f"Greatest increase: ${greatest_increase} in {greatest_increase_month}")
+print(f"Greatest decrease: ${greatest_decrease} in {greatest_decrease_month}")
 
 # Print the analysis to the terminal window
 
