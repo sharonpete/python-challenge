@@ -23,7 +23,10 @@ with open(csvpath) as csvfile:
     greatest_decrease = 0
     greatest_increase_month = ""
     greatest_decrease_month = ""
-    
+    prior_month_result = 0
+    current_month_result = 0
+    current_increase = 0
+    current_decrease = 0
 
     # iterate through the file... 
     for row in csvreader:
@@ -36,19 +39,35 @@ with open(csvpath) as csvfile:
 
         # Find the greatest increase in profits (date and amount) over the entire period
         # .... this is measuring a month over month increase?
-        if int(row[1]) > greatest_increase:
-            greatest_increase = int(row[1])
+        prior_month_result = current_month_result #save the prior month!
+        current_month_result = int(row[1])
+        
+        current_change = current_month_result - prior_month_result
+
+        
+
+
+        if current_month_result > prior_month_result:  # gain
+            current_increase = current_month_result - prior_month_result
+           
+        elif current_month_result < prior_month_result: #loss
+            current_decrease = current_month_result - prior_month_result #this is wrong
+            
+
+        if current_increase > greatest_increase:
+            greatest_increase = current_increase
             greatest_increase_month = row[0]
 
         # Find the greatest decrease in losses (date and amount) over the entire period
         # .... this is measuring a month over month loss?
-        if int(row[1]) < greatest_decrease:
-            greatest_decrease = int(row[1])
+        if current_decrease < greatest_decrease:
+            greatest_decrease = current_decrease
             greatest_decrease_month = row[0]
 
         # calculate the changes in "Profit/Losses" over the entire period, 
         # then find the average of those changes
-        
+
+
 
 average_change = net_profit/total_months
 print(f"average change = {average_change}")
