@@ -27,6 +27,9 @@ with open(csvpath) as csvfile:
     current_month_result = 0
     current_increase = 0
     current_decrease = 0
+    current_change = 0
+    accumulate_changes = 0  # this is a terrible name, CHANGE ME
+    first_row = True
 
     # iterate through the file... 
     for row in csvreader:
@@ -66,17 +69,27 @@ with open(csvpath) as csvfile:
 
         # calculate the changes in "Profit/Losses" over the entire period, 
         # then find the average of those changes
+        # skip the first row... this is ugly
+        if first_row == False:
+            #print(f"... current change: {current_change} and accumulated changes: {accumulate_changes}")
+            accumulate_changes = accumulate_changes + current_change
+
+        first_row = False  
+
+#print(f"accumulated changes: {accumulate_changes}")
+#average_change = net_profit/total_months
+average_change = accumulate_changes / (total_months - 1)
 
 
 
-average_change = net_profit/total_months
-print(f"average change = {average_change}")
 
 # Print the anaylysis to the terminal window
 print("Financial Analysis")
 print("----------------------------")
 print(f"Total number of months: {total_months}")
 print(f"Net profit: ${net_profit}")
+print(f"Average Change = ${average_change}")
+
 print(f"Greatest increase: ${greatest_increase} in {greatest_increase_month}")
 print(f"Greatest decrease: ${greatest_decrease} in {greatest_decrease_month}")
 
