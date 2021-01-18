@@ -7,9 +7,6 @@ Development notes below:
 - Adding these to git took three tries because of the large CSV files.  
 - PyBank:
   - added opening and reading of CSV file... had a minor syntax error, but otherwise it was Chocolate Cake!
-  - added iteration through the CSV file and initial calculations for total months, net profits/losses over 
-  entire period, greatest increase in profit (date and amount) over entire period, greatest decrease in
-  losses (date and amount) over entire period (assuming that this means the greatest loss, because
-  "greatest decrease in losses" could mean something else entirely)
-  - I am not sure what "calculate the changes in profit/losses over the entire period, then find the average of those changes" means, 
-  so I am going to punt for the moment with my best guess, then ask in class on Thursday (no Tuesday class this week)
+  - added iteration through the CSV file and initial calculations for total months, net profits/losses over entire period, greatest increase in profit (date and amount) over entire period, greatest decrease in losses (date and amount) over entire period (assuming that this means the greatest loss, because "greatest decrease in losses" could mean something else entirely)
+  - I am not sure what "calculate the changes in profit/losses over the entire period, then find the average of those changes" means, so I am going to punt for the moment with my best guess
+  - Okay, that was not so difficult to solve, the changes are calculated and the average change is good... had to put parens around the denominator (total_months-1).  I tried the calculations on the spreadsheet and found my python calculation was initially wrong.  How do we ensure accuracy in the real world?  
