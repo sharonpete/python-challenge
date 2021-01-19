@@ -68,4 +68,7 @@ print(sep_line)
 winner = max(vote_tally, key=vote_tally.get)
 print(f"Winner: {winner}")
 print(sep_line)
-
+# find the number of votes per county, just for fun
+for county in counties:
+    print(f"{county} had {county_tally[county]} voters")
+print(sep_line)
