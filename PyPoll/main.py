@@ -9,6 +9,10 @@ vote_tally = {}
 counties = []
 votes = 0
 county_tally = {}
+new_count = 0
+candidate_votes = 0
+candidate_percent = 0
+
 
 
 # load the file
@@ -20,7 +24,8 @@ with open(csvpath) as csvfile:
 
     csv_header = next(csvreader)
 
-    # print(f"CSV Header: {csv_header}") this is not needed for the final printout
+    # proof that CSV header row successfully stored
+    print(f"CSV Header: {csv_header}") 
 
      # iterate through the file... 
     for row in csvreader:
@@ -54,6 +59,7 @@ print("Election Results")
 print(sep_line)
 print(f"Total Votes: {total_number_votes}")
 print(sep_line)
+
 for candidate in candidates:
 
     # find percentage of votes each candidate won
@@ -72,3 +78,33 @@ print(sep_line)
 for county in counties:
     print(f"{county} county had {county_tally[county]} voters")
 print(sep_line)
+
+# Export the analysis to a text file, more chocolate cake... frosting, maybe?
+
+# Specify the file to write to TODO: more meaningful file name?
+output_path = os.path.join("Resources","election_results.txt")
+
+# Open the file using "write" mode.  Specify the variable to hold the contents
+with open(output_path, 'w', newline='') as newfile: #don't conflict with the opened file
+
+    #Initialize the filewriter
+    filewriter = csv.writer(newfile, delimiter=',')
+
+    filewriter.writerow([sep_line])
+    filewriter.writerow(["Election Results"])
+    filewriter.writerow([sep_line])
+    
+    for candidate in candidates:
+        candidate_votes = vote_tally[candidate]
+        candidate_percent = round(candidate_votes/total_number_votes*100,2)
+
+        filewriter.writerow([f"{candidate}: {candidate_percent}% ({candidate_votes})"])
+
+    filewriter.writerow([sep_line])
+    filewriter.writerow([f"Winner: {winner}"])
+    filewriter.writerow([sep_line])
+
+    for county in counties:
+        filewriter.writerow([f"{county} county had {county_tally[county]} voters"])
+    
+    filewriter.writerow([sep_line])

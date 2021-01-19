@@ -11,11 +11,12 @@ with open(csvpath) as csvfile:
 
     csvreader = csv.reader(csvfile, delimiter=',')
 
-    #print(csvreader)
+    print(csvreader)
 
     csv_header = next(csvreader)
 
-    #print(f"CSV Header: {csv_header}")
+    # proof that CSV header row successfully stored
+    print(f"CSV Header: {csv_header}")
     
     total_months = 0
     net_profit = 0
@@ -28,7 +29,7 @@ with open(csvpath) as csvfile:
     current_increase = 0
     current_decrease = 0
     current_change = 0
-    accumulate_changes = 0  # this is a terrible name, CHANGE ME
+    accumulate_changes = 0  
     first_row = True
 
     # iterate through the file... 
@@ -41,14 +42,11 @@ with open(csvpath) as csvfile:
         net_profit = net_profit + int(row[1])
 
         # Find the greatest increase in profits (date and amount) over the entire period
-        # .... this is measuring a month over month increase?
+        # .... this is measuring a month over month increase
         prior_month_result = current_month_result #save the prior month!
         current_month_result = int(row[1])
         
         current_change = current_month_result - prior_month_result
-
-        
-
 
         if current_month_result > prior_month_result:  # gain
             current_increase = current_month_result - prior_month_result
@@ -69,17 +67,17 @@ with open(csvpath) as csvfile:
 
         # calculate the changes in "Profit/Losses" over the entire period, 
         # then find the average of those changes
-        # skip the first row... this is ugly
         if first_row == False:
-            #print(f"... current change: {current_change} and accumulated changes: {accumulate_changes}")
+          
             accumulate_changes = accumulate_changes + current_change
 
         first_row = False  
 
-#print(f"accumulated changes: {accumulate_changes}")
+
 #average_change = net_profit/total_months
 average_change = round(accumulate_changes / (total_months - 1),2)
 sep_line = '-------------------------'
+
 # Print the anaylysis to the terminal window
 print(sep_line)
 print("Financial Analysis")
@@ -91,10 +89,11 @@ print(f"Average Change = ${average_change}")
 print(f"Greatest increase in Profits: ${greatest_increase} in {greatest_increase_month}")
 print(f"Greatest decrease in Profits: ${greatest_decrease} in {greatest_decrease_month}")
 print(sep_line)
+
 # Export the analysis to a text file, more chocolate cake... frosting, maybe?
 
-# Specify the file to write to TODO: more meaningful file name?
-output_path = os.path.join("Resources","new.txt")
+# Specify the file to write to 
+output_path = os.path.join("Resources","financial_analysis.txt")
 
 # Open the file using "write" mode.  Specify the variable to hold the contents
 with open(output_path, 'w', newline='') as newfile: #don't conflict with the opened file

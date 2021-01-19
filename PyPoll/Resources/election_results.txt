@@ -1,0 +1,16 @@
+-------------------------
+Election Results
+-------------------------
+Khan: 63.0% (2218231)
+Correy: 20.0% (704200)
+Li: 14.0% (492940)
+O'Tooley: 3.0% (105630)
+-------------------------
+Winner: Khan
+-------------------------
+Marsh county had 2265957 voters
+Queen county had 697203 voters
+Bamoo county had 348658 voters
+Trandee county had 104617 voters
+Raffah county had 104566 voters
+-------------------------
