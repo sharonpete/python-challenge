@@ -10,3 +10,9 @@ Development notes below:
   - added iteration through the CSV file and initial calculations for total months, net profits/losses over entire period, greatest increase in profit (date and amount) over entire period, greatest decrease in losses (date and amount) over entire period (assuming that this means the greatest loss, because "greatest decrease in losses" could mean something else entirely)
   - I am not sure what "calculate the changes in profit/losses over the entire period, then find the average of those changes" means, so I am going to punt for the moment with my best guess
   - Okay, that was not so difficult to solve, the changes are calculated and the average change is good... had to put parens around the denominator (total_months-1).  I tried the calculations on the spreadsheet and found my python calculation was initially wrong.  How do we ensure accuracy in the real world?  
+- PyPoll
+  - added opening and reading of CSV file... more Chocolate Cake!
+  - created a list of candidates as we go, adding a new one as a unique candidate is found, so far, so good
+  - got the initial pass at printing out results in place
+  - decided to use a dictionary to tally the votes... had to play with the syntax a bit to gain some understanding.
+  - wow, after all of this, I should check in my code! (ooops, missed about 5 check-ins as I was focused on getting this done)
