@@ -11,11 +11,11 @@ with open(csvpath) as csvfile:
 
     csvreader = csv.reader(csvfile, delimiter=',')
 
-    print(csvreader)
+    #print(csvreader)
 
     csv_header = next(csvreader)
 
-    print(f"CSV Header: {csv_header}")
+    #print(f"CSV Header: {csv_header}")
     
     total_months = 0
     net_profit = 0
@@ -79,17 +79,18 @@ with open(csvpath) as csvfile:
 #print(f"accumulated changes: {accumulate_changes}")
 #average_change = net_profit/total_months
 average_change = round(accumulate_changes / (total_months - 1),2)
-
+sep_line = '-------------------------'
 # Print the anaylysis to the terminal window
+print(sep_line)
 print("Financial Analysis")
-print("----------------------------")
+print(sep_line)
 print(f"Total number of months: {total_months}")
 print(f"Net profit: ${net_profit}")
 print(f"Average Change = ${average_change}")
 
 print(f"Greatest increase in Profits: ${greatest_increase} in {greatest_increase_month}")
 print(f"Greatest decrease in Profits: ${greatest_decrease} in {greatest_decrease_month}")
-
+print(sep_line)
 # Export the analysis to a text file, more chocolate cake... frosting, maybe?
 
 # Specify the file to write to TODO: more meaningful file name?
@@ -101,10 +102,12 @@ with open(output_path, 'w', newline='') as newfile: #don't conflict with the ope
     #Initialize the filewriter
     filewriter = csv.writer(newfile, delimiter=',')
 
+    filewriter.writerow([sep_line])
     filewriter.writerow(["Financial Analysis"])
-    filewriter.writerow(["----------------------------"])
+    filewriter.writerow([sep_line])
     filewriter.writerow([f"Total number of months: {total_months}"])
     filewriter.writerow([f"Net profit: ${net_profit}"])
     filewriter.writerow([f"Average Change = ${average_change}"])
     filewriter.writerow([f"Greatest increase in Profits: ${greatest_increase} in {greatest_increase_month}"])
     filewriter.writerow([f"Greatest decrease in Profits: ${greatest_decrease} in {greatest_decrease_month}"])
+    filewriter.writerow([sep_line])

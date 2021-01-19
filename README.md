@@ -16,3 +16,6 @@ Development notes below:
   - got the initial pass at printing out results in place
   - decided to use a dictionary to tally the votes... had to play with the syntax a bit to gain some understanding.
   - wow, after all of this, I should check in my code! (ooops, missed about 5 check-ins as I was focused on getting this done)
+  - found the winner of the election using the max function.  i notice that the candidates are always listed in order of the number of votes they receive (highest to lowest) with basically no intervention on my part.
+  - i added the tally of voters per county just to get a little more practice... and it was fun.
+  - maybe a needless refinement, but i made the separating line into its own variable on both main.py files, just to clean things up a bit

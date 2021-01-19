@@ -47,8 +47,8 @@ with open(csvpath) as csvfile:
         
         
 
-print(vote_tally)
-print(candidates)
+#print(vote_tally)
+#print(candidates)
 sep_line = '-------------------------'
 print("Election Results")
 print(sep_line)
@@ -70,5 +70,5 @@ print(f"Winner: {winner}")
 print(sep_line)
 # find the number of votes per county, just for fun
 for county in counties:
-    print(f"{county} had {county_tally[county]} voters")
+    print(f"{county} county had {county_tally[county]} voters")
 print(sep_line)
