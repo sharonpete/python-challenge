@@ -42,7 +42,7 @@ with open(csvpath) as csvfile:
             county_tally[county] = 1
         else:
             new_tally = 0
-            new_tally = county_tally[county]
+            new_tally = county_tally[county] + 1
             county_tally[county] = new_tally
         
         
