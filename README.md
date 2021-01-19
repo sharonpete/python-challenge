@@ -1,5 +1,7 @@
 # python-challenge
 This is a repo for the Python homework.
+Sharon Templin
+U of Mn Data Analytics Bootcamp Cohort 10
 
 
 Development notes below:
